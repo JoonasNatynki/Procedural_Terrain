@@ -9,7 +9,7 @@ class ATerrain;
 struct WorkerTask
 {
 public:
-	FVector _blockRootCoordinates;	// The coordinates where a block should exist
+	FVector _sectionRootCoordinates;	// The coordinates where a block should exist
 	UTerrainSection * _section;	// The pointer of the block to be worked on
 	unsigned char _taskToBeDone; // 1 = Create block and initialize, 2 = Update values
 };
@@ -37,7 +37,8 @@ public:
 
 
 	// TASK FUNCTIONS!!---------------------------------------------------------------
-	bool InitializeBlock(WorkerTask task);
+	UTerrainSection * CreateSection(WorkerTask task);
+	bool InitializeSection(WorkerTask task);
 	//--------------------------------------------------------------------------------
 	FVector getBlockRootCoordinatesFromCoordinates(FVector coordinates);
 

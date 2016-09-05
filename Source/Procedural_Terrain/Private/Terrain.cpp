@@ -39,7 +39,7 @@ void ATerrain::BeginPlay()
 												//terrainWorker->taskQueue.Enqueue(task);
 	_terrainWorker->CreateThread();					//Starts a new thread that does shit that you give it
 													// INITIALIZE TERRAIN VOXELS
-	InitializeTerrainBlocks();
+	InitializeTerrainSections();
 }
 //############################################################################################################################
 
@@ -170,7 +170,7 @@ void ATerrain::Tick( float DeltaTime )
 
 
 //############################################################################################################################
-bool ATerrain::InitializeTerrainBlocks()
+bool ATerrain::InitializeTerrainSections()
 {
 	for (int z = 0; z < worldSideZ; z++)
 	{
@@ -181,12 +181,13 @@ bool ATerrain::InitializeTerrainBlocks()
 				// If block does not exist in coordinates, create it....well obviously
 				if (getTerrainBlockFromCoordinates(FVector(TERRAIN_ROOT.X + x * BLOCK_SIZE, TERRAIN_ROOT.Y + y * BLOCK_SIZE, TERRAIN_ROOT.Z + z * BLOCK_SIZE)) == NULL)
 				{
-					//WorkerTask task;
-					//task._taskToBeDone = 0;
-					//task._blockRootCoordinates = FVector(TERRAIN_ROOT.X + x * BLOCK_SIZE, TERRAIN_ROOT.Y + y * BLOCK_SIZE, TERRAIN_ROOT.Z + z * BLOCK_SIZE);
-					//_terrainWorker->_taskQueue.Enqueue(task);
-					FVector blockRootCoordinates = FVector(TERRAIN_ROOT.X + x * BLOCK_SIZE, TERRAIN_ROOT.Y + y * BLOCK_SIZE, TERRAIN_ROOT.Z + z * BLOCK_SIZE);
-					CreateBlock(blockRootCoordinates);
+					// Initialize WorkerTask task;
+					FVector sectionRootCoordinates = FVector(TERRAIN_ROOT.X + x * BLOCK_SIZE, TERRAIN_ROOT.Y + y * BLOCK_SIZE, TERRAIN_ROOT.Z + z * BLOCK_SIZE);
+					WorkerTask task;
+					task._taskToBeDone = 0;	// Create section = 0s
+					task._sectionRootCoordinates = sectionRootCoordinates;
+					_terrainWorker->_taskQueue.Enqueue(task);
+					_terrainWorker->_taskQueue.Enqueue(task);
 				}
 			}
 		}

@@ -109,7 +109,10 @@ uint32 TerrainWorker::Run()
 			_taskQueue.Dequeue(task);
 
 			switch (task._taskToBeDone)
-				case 0:	InitializeBlock(task);
+			{
+				case 0:	CreateSection(task);
+				case 1:	InitializeSection(task);
+			}
 		}
 	}
 
@@ -121,7 +124,6 @@ uint32 TerrainWorker::Run()
 //############################################################################################################################
 
 //############################################################################################################################
-//Init
 bool TerrainWorker::Init()
 {
 	//PUT RANDOM INIT SHIT HERE IF YOU NEED
@@ -133,11 +135,24 @@ bool TerrainWorker::Init()
 
 // TASK FUNCTIONS! ###########################################################################################################
 // Createa block in the overloaded array at the given coordinates!
-bool TerrainWorker::InitializeBlock(WorkerTask task)
+bool TerrainWorker::InitializeSection(WorkerTask task)
 {
 	return true;
 }
 //############################################################################################################################
+
+//############################################################################################################################
+UTerrainSection * TerrainWorker::CreateSection(WorkerTask task)
+{
+	UTerrainSection * createdSection = NewObject<UTerrainSection>(_terrain);
+
+	// Adds blocks into the array[x][y][z]
+	_terrain->_blockArrayCriticalSection.Lock();
+		_terrain->_terrainSectionMap.Add(task._sectionRootCoordinates, createdSection);	// add into the tmap
+	_terrain->_blockArrayCriticalSection.Unlock();
+	
+	return createdSection;
+}
 
 //############################################################################################################################
 FVector TerrainWorker::getBlockRootCoordinatesFromCoordinates(FVector coordinate)

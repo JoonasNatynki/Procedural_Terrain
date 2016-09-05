@@ -58,7 +58,7 @@ public:
 
 	// FOR INITIALIZATION ONLY 
 	UFUNCTION(BlueprintCallable, category = "TransVoxel Procedural Terrain")
-		bool InitializeTerrainBlocks();
+		bool InitializeTerrainSections();
 
 	UFUNCTION(BlueprintCallable, category = "TransVoxel Procedural Terrain")
 		UTerrainSection * getTerrainBlockFromCoordinates(FVector blockRootCoordinates);
