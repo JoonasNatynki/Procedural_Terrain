@@ -12,8 +12,8 @@ UCLASS()
 class PROCEDURAL_TERRAIN_API UTerrainSection : public UObject
 {
 	GENERATED_BODY()
-	
-	
-	
-	
+
+public:
+	int _meshSectionIndex;
+		
 };
