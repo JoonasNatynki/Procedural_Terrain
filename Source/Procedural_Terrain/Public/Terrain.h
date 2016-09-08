@@ -26,6 +26,11 @@ public:
 
 	// EXPERIMENTAL (instead of creating actors that are block who have procedural mesh component components, we create a single terrain mesh that has different mesh sections.
 	UProceduralMeshComponent * _terrainMesh;
+
+	// Running integer that we use to give mesh sections their index
+	int _runningMeshSectionIndex = 0;
+	// All the mesh section indeces that were used but are now free.
+	TArray<int> _freedMeshSectionIndeces;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float _debugColorHandle = 2.0f;
@@ -44,6 +49,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int worldSideZ;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		USphereComponent * _rootSphere;
 

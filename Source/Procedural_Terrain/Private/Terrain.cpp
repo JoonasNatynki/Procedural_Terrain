@@ -103,7 +103,79 @@ void ATerrain::Tick( float DeltaTime )
 				true, -1, 1,
 				1);
 
+			DrawDebugLine(
+				GetWorld(),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+				FColor(255, 0, 0),
+				true, -1, 1,
+				1);
 
+			DrawDebugLine(
+				GetWorld(),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y, item.Key.Z + (BLOCK_SIZE)),
+				FColor(255, 0, 0),
+				true, -1, 1,
+				1);
+
+			DrawDebugLine(
+				GetWorld(),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+				FVector(item.Key.X, item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+				FColor(255, 0, 0),
+				true, -1, 1,
+				1);
+
+			DrawDebugLine(
+				GetWorld(),
+				FVector(item.Key.X, item.Key.Y, item.Key.Z + (BLOCK_SIZE)),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y, item.Key.Z + (BLOCK_SIZE)),
+				FColor(255, 0, 0),
+				true, -1, 1,
+				1);
+
+			DrawDebugLine(
+				GetWorld(),
+				FVector(item.Key.X, item.Key.Y, item.Key.Z + (BLOCK_SIZE)),
+				FVector(item.Key.X, item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+				FColor(255, 0, 0),
+				true, -1, 1,
+				1);
+
+			DrawDebugLine(
+				GetWorld(),
+				FVector(item.Key.X, item.Key.Y + (BLOCK_SIZE), item.Key.Z),
+				FVector(item.Key.X, item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+				FColor(255, 0, 0),
+				true, -1, 1,
+				1);
+
+			DrawDebugLine(
+				GetWorld(),
+				FVector(item.Key.X, item.Key.Y + (BLOCK_SIZE), item.Key.Z),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z),
+				FColor(255, 0, 0),
+				true, -1, 1,
+				1);
+
+			DrawDebugLine(
+				GetWorld(),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y, item.Key.Z),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z),
+				FColor(255, 0, 0),
+				true, -1, 1,
+				1);
+
+			DrawDebugLine(
+				GetWorld(),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y, item.Key.Z),
+				FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y, item.Key.Z + (BLOCK_SIZE)),
+				FColor(255, 0, 0),
+				true, -1, 1,
+				1);
+
+			/*
 			//PrintStr(ToString(getIntVectorFromBlockRootCoordinates(item->GetActorLocation())));
 			
 			if (getIntVectorFromBlockRootCoordinates(item.Key).X == worldSideX - 1)
@@ -140,7 +212,54 @@ void ATerrain::Tick( float DeltaTime )
 					true, -1, 1,
 					1);
 			}
-
+			if (getIntVectorFromBlockRootCoordinates(item.Key).Z == worldSideZ - 1)
+			{
+				DrawDebugLine(
+					GetWorld(),
+					FVector(item.Key.X, item.Key.Y, item.Key.Z + (BLOCK_SIZE)),
+					FVector(item.Key.X, item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+					FColor(255, 0, 0),
+					true, -1, 1,
+					1);
+				DrawDebugLine(
+					GetWorld(),
+					FVector(item.Key.X, item.Key.Y, item.Key.Z + (BLOCK_SIZE)),
+					FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y, item.Key.Z + (BLOCK_SIZE)),
+					FColor(255, 0, 0),
+					true, -1, 1,
+					1);
+			}
+			if ((getIntVectorFromBlockRootCoordinates(item.Key).Z == worldSideZ - 1) && (getIntVectorFromBlockRootCoordinates(item.Key).X == worldSideX - 1))
+			{
+				DrawDebugLine(
+					GetWorld(),
+					FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y, item.Key.Z + (BLOCK_SIZE)),
+					FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+					FColor(255, 0, 0),
+					true, -1, 1,
+					1);
+			}
+			if ((getIntVectorFromBlockRootCoordinates(item.Key).Z == worldSideZ - 1) && (getIntVectorFromBlockRootCoordinates(item.Key).Y == worldSideY - 1))
+			{
+				DrawDebugLine(
+					GetWorld(),
+					FVector(item.Key.X, item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+					FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+					FColor(255, 0, 0),
+					true, -1, 1,
+					1);
+			}
+			if ((getIntVectorFromBlockRootCoordinates(item.Key).Y == worldSideY - 1) && (getIntVectorFromBlockRootCoordinates(item.Key).X == worldSideX - 1))
+			{
+				DrawDebugLine(
+					GetWorld(),
+					FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z),
+					FVector(item.Key.X + (BLOCK_SIZE), item.Key.Y + (BLOCK_SIZE), item.Key.Z + (BLOCK_SIZE)),
+					FColor(255, 0, 0),
+					true, -1, 1,
+					1);
+			}
+*			 */
 
 			//PrintStr(ToString(item->GetActorLocation()));
 			/*
@@ -186,7 +305,7 @@ bool ATerrain::InitializeTerrainSections()
 					WorkerTask task;
 					task._taskToBeDone = 0;	// Create section = 0s
 					task._sectionRootCoordinates = sectionRootCoordinates;
-					_terrainWorker->_taskQueue.Enqueue(task);
+					// Throws the task into the thread queue to be processed
 					_terrainWorker->_taskQueue.Enqueue(task);
 				}
 			}

@@ -144,7 +144,9 @@ bool TerrainWorker::InitializeSection(WorkerTask task)
 //############################################################################################################################
 UTerrainSection * TerrainWorker::CreateSection(WorkerTask task)
 {
-	UTerrainSection * createdSection = NewObject<UTerrainSection>(_terrain);
+	UTerrainSection * createdSection = NewObject<UTerrainSection>(_terrain);	// We create the section object
+	createdSection->_meshSectionIndex = _terrain->_runningMeshSectionIndex;		// Give it the section index
+	_terrain->_runningMeshSectionIndex++;	// Iterate the mesh section index
 
 	// Adds blocks into the array[x][y][z]
 	_terrain->_blockArrayCriticalSection.Lock();
